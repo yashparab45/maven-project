@@ -8,16 +8,17 @@ tools {
 stages {
   stage('build') {
     steps {
-     sh 'mvn clean package' // One or more steps need to be included within the steps block.
+     sh 'mvn clean package'
     }
 
     post {
       success {
-       archiveArtifacts artifacts: '**/target/*.war' // One or more steps need to be included within each condition's block.
+       archiveArtifacts artifacts: '/home/ubuntu/jenkins/workspace/CICD/server/target
+/*.war' 
       }
     }
   }
-}
+ }
 }
 
 
