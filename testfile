@@ -1,3 +1,4 @@
+//CICD PIPELINE
 pipeline 
 {
     agent {
