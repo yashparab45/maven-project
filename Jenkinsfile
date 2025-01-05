@@ -3,7 +3,7 @@ pipeline {
   label 'SERVER 1'
 }
 tools {
-  maven 'mymaven'
+  maven 'maven'
 }
 stages {
   stage('build') {
@@ -13,8 +13,7 @@ stages {
 
     post {
       success {
-       archiveArtifacts artifacts: '/home/ubuntu/jenkins/workspace/CICD/server/target
-/*.war' 
+       archiveArtifacts artifacts: '**/target/*.war' 
       }
     }
   }
