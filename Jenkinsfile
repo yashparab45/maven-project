@@ -1,22 +1,23 @@
-pipeline 
-{
+pipeline {
  agent {
   label 'SERVER 1'
 }
 tools {
   maven 'maven'
 }
-stages
- {
-  stage('build')
-   {
+stages{
+  stage('build') {
     steps {
-     sh '-B -DskipTests clean package'
+     sh 'mvn clean package'
     }
 
+    post {
+      success {
+       archiveArtifacts artifacts: '**/target/*.war' 
+      }
+    }
   }
-}
-
+ }
 }
 
 
