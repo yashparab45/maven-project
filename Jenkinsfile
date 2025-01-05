@@ -1,24 +1,41 @@
 pipeline {
-    agent {
+ agent {
   label 'SERVER 1'
-   }
-   tools {
+}
+tools {
   maven 'mymaven'
+}
+stages {
+  stage('build') {
+    steps {
+     sh 'mvn clean package' // One or more steps need to be included within the steps block.
+    }
+
+    post {
+      success {
+       archieveArtifacts artifacts: '**/target/*.war' // One or more steps need to be included within each condition's block.
+      }
+    }
   }
 
-   stages {
-        stage('Build') {
-            steps {
-                sh 'mvn clean package'
-            }
-        
-        post {
-          success {
-     archieveArtifacts artifacts: '**/target/*.war'
-    }
-
-    }
 }
-   }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
