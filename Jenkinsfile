@@ -13,7 +13,7 @@ stages {
 
     post {
       success {
-       archieveArtifacts artifacts: '**/target/*.war' // One or more steps need to be included within each condition's block.
+       archiveArtifacts artifacts: '**/target/*.war' // One or more steps need to be included within each condition's block.
       }
     }
   }
