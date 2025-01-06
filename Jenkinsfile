@@ -51,9 +51,9 @@ stages{
  }
 
     stage('deploy_dev') {
-        when { expression {params.select_environment == 'dev'}
+        when { expression {params.select_environment == 'DEV'}
         beforeAgent true}
-        agent { label 'DevServer' }
+        agent { label 'SERVER 1' }
         steps
         {
             dir("/var/www/html")
@@ -70,9 +70,9 @@ stages{
 
      stage('deploy_prod')
     {
-      when { expression {params.select_environment == 'prod'}
+      when { expression {params.select_environment == 'PROD'}
         beforeAgent true}
-        agent { label 'ProdServer' }
+        agent { label 'SERVER2' }
         steps
         {
              timeout(time:5, unit:'DAYS'){
