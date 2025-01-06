@@ -19,13 +19,28 @@ stages{
      sh 'mvn clean package'
      echo "Hello $NAME ${params.LASTNAME}"
     }
+ }
 
-    post {
+    stage('test') {
+      parallel {
+        stage('testA') {
+          steps {
+            echo "This is TEST A"
+          }
+        }
+        stage('testB') {
+          steps {
+            echo "This is test B"
+          }
+        }
+       }
+
+       post {
       success {
        archiveArtifacts artifacts: '**/target/*.war' 
       }
     }
-  }
+    }
  }
 }
 
