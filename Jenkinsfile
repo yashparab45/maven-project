@@ -44,7 +44,7 @@ stages{
        post {
       success {
         dir("webapp/target") {
-       stash name: "maven-build" , includes "*.war"
+       stash name: "maven-build" , includes: "*.war"
       }
     }
     }
