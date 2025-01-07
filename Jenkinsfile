@@ -1,6 +1,6 @@
 pipeline {
  agent {
-  label 'SERVER2'
+  label 'SERVER 1'
 }
 
 parameters {
@@ -28,13 +28,13 @@ stages{
     stage('test') {
       parallel {
         stage('testA') {
-          agent {label 'SERVER2'}
+          agent {label 'SERVER 1'}
           steps {
             sh 'mvn test'
           }
         }
         stage('testB') {
-           agent {label 'SERVER2'}
+           agent {label 'SERVER 1'}
           steps {
             sh 'mvn test'
           }
@@ -53,7 +53,7 @@ stages{
     stage('deploy_dev') {
         when { expression {params.select_environments == 'DEV'}
         beforeAgent true}
-        agent { label 'SERVER2' }
+        agent { label 'SERVER 1' }
         steps
         {
             dir("/var/www/html")
@@ -72,7 +72,7 @@ stages{
     {
       when { expression {params.select_environments == 'PROD'}
         beforeAgent true}
-        agent { label 'SERVER2' }
+        agent { label 'SERVER 2' }
         steps
         {
              timeout(time:5, unit:'DAYS'){
