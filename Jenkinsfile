@@ -62,7 +62,7 @@ stages{
             }
             sh """
             cd /var/www/html/
-            jar -xvf webapp.war
+            java -cp webapp.war -xvf
             """
         }
     
@@ -84,7 +84,7 @@ stages{
             }
             sh """
             cd /var/www/html/
-            jar -xvf webapp.war
+            java -cp webapp.war -xvf
             """
 
 }
