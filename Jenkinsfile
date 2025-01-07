@@ -62,7 +62,7 @@ stages{
             }
             sh """
             cd /var/www/html/
-            java -cp webapp.war -xvf
+            jar -xvf webapp.war 
             """
         }
     
@@ -82,10 +82,10 @@ stages{
             {
                 unstash "maven-build"
             }
-            sh """
-            cd /var/www/html/
-            java -cp webapp.war -xvf
-            """
+               sh """
+               cd /var/www/html/
+               jar -xvf webapp.war
+               """
 
 }
 }
