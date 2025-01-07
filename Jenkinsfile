@@ -62,7 +62,7 @@ stages{
             }
             sh """
             cd /var/www/html/
-            jar -xvf webapp.war 
+            /usr/lib/jvm/java-8-openjdk-amd64/bin/jar" -xvf webapp.war
             """
         }
     
@@ -84,7 +84,7 @@ stages{
             }
                sh """
                cd /var/www/html/
-               jar -xvf webapp.war
+               /usr/lib/jvm/java-8-openjdk-amd64/bin/jar" -xvf webapp.war
                """
 
 }
